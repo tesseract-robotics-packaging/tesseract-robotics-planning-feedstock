@@ -9,6 +9,8 @@ source:
     git_rev: {{ version }}
     git_depth: 50
     folder: src
+    patches:
+      - tesseract_planning_fix.patch
 
 build:
   number: 0
