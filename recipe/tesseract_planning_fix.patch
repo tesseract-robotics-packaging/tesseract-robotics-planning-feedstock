@@ -12,10 +12,18 @@ index 14eb54a..e2d9a86 100644
  # Tests
  if(TESSERACT_ENABLE_TESTING)
 diff --git a/tesseract_process_managers/CMakeLists.txt b/tesseract_process_managers/CMakeLists.txt
-index 779066b..96b2cb1 100644
+index 779066b..c438c27 100644
 --- a/tesseract_process_managers/CMakeLists.txt
 +++ b/tesseract_process_managers/CMakeLists.txt
-@@ -132,7 +132,7 @@ target_include_directories(${PROJECT_NAME}_utils PUBLIC "$<BUILD_INTERFACE:${CMA
+@@ -10,6 +10,7 @@ if(WIN32)
+ endif()
+ 
+ # System dependencies are found with CMake's conventions
++find_package(jsoncpp REQUIRED)
+ find_package(Eigen3 REQUIRED)
+ find_package(Taskflow REQUIRED)
+ find_package(console_bridge REQUIRED)
+@@ -132,7 +133,7 @@ target_include_directories(${PROJECT_NAME}_utils PUBLIC "$<BUILD_INTERFACE:${CMA
                                                          "$<INSTALL_INTERFACE:include>")
  list(APPEND Targets ${PROJECT_NAME}_utils)
  
