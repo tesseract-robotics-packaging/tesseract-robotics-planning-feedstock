@@ -13,7 +13,7 @@ source:
       - tesseract_planning_fix.patch
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - name: tesseract-robotics-command-language
@@ -147,7 +147,7 @@ outputs:
         - test -f ${PREFIX}/include/tesseract_time_parameterization/trajectory_container.h  # [unix]
         - test -f ${PREFIX}/lib/libtesseract_time_parameterization.so  # [unix]
         - test -f ${PREFIX}/lib/cmake/tesseract_time_parameterization/tesseract_time_parameterization-config.cmake # [unix]
-        - if not exist %LIBRARY_PREFIX%\include\time_parameterization\trajectory_container.h (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\include\tesseract_time_parameterization\trajectory_container.h (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\tesseract_time_parameterization.lib (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\bin\tesseract_time_parameterization.dll (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\cmake\tesseract_time_parameterization\tesseract_time_parameterization-config.cmake (exit 1)  # [win]
@@ -193,7 +193,7 @@ outputs:
         - test -f ${PREFIX}/include/tesseract_process_managers/core/default_process_planners.h  # [unix]
         - test -f ${PREFIX}/lib/libtesseract_process_managers.so  # [unix]
         - test -f ${PREFIX}/lib/cmake/tesseract_process_managers/tesseract_process_managers-config.cmake # [unix]
-        - if not exist %LIBRARY_PREFIX%\include\process_managers\core\default_process_planners.h (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\include\tesseract_process_managers\core\default_process_planners.h (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\tesseract_process_managers.lib (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\bin\tesseract_process_managers.dll (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\cmake\tesseract_process_managers\tesseract_process_managers-config.cmake (exit 1)  # [win]
