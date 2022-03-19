@@ -22,6 +22,9 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-tesseract--robotics--command--language-green.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-command-language) | [![Conda Downloads](https://img.shields.io/conda/dn/tesseract-robotics/tesseract-robotics-command-language.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-command-language) | [![Conda Version](https://img.shields.io/conda/vn/tesseract-robotics/tesseract-robotics-command-language.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-command-language) | [![Conda Platforms](https://img.shields.io/conda/pn/tesseract-robotics/tesseract-robotics-command-language.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-command-language) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-tesseract--robotics--motion--planners-green.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-motion-planners) | [![Conda Downloads](https://img.shields.io/conda/dn/tesseract-robotics/tesseract-robotics-motion-planners.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-motion-planners) | [![Conda Version](https://img.shields.io/conda/vn/tesseract-robotics/tesseract-robotics-motion-planners.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-motion-planners) | [![Conda Platforms](https://img.shields.io/conda/pn/tesseract-robotics/tesseract-robotics-motion-planners.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-motion-planners) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-tesseract--robotics--process--managers-green.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-process-managers) | [![Conda Downloads](https://img.shields.io/conda/dn/tesseract-robotics/tesseract-robotics-process-managers.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-process-managers) | [![Conda Version](https://img.shields.io/conda/vn/tesseract-robotics/tesseract-robotics-process-managers.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-process-managers) | [![Conda Platforms](https://img.shields.io/conda/pn/tesseract-robotics/tesseract-robotics-process-managers.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-process-managers) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-tesseract--robotics--time--parameterization-green.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-time-parameterization) | [![Conda Downloads](https://img.shields.io/conda/dn/tesseract-robotics/tesseract-robotics-time-parameterization.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-time-parameterization) | [![Conda Version](https://img.shields.io/conda/vn/tesseract-robotics/tesseract-robotics-time-parameterization.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-time-parameterization) | [![Conda Platforms](https://img.shields.io/conda/pn/tesseract-robotics/tesseract-robotics-time-parameterization.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-time-parameterization) |
 
 Installing tesseract-robotics-planning
 ======================================
@@ -33,10 +36,10 @@ conda config --add channels tesseract-robotics
 conda config --set channel_priority strict
 ```
 
-Once the `tesseract-robotics` channel has been enabled, `tesseract-robotics-command-language` can be installed with:
+Once the `tesseract-robotics` channel has been enabled, `tesseract-robotics-command-language, tesseract-robotics-motion-planners, tesseract-robotics-process-managers, tesseract-robotics-time-parameterization` can be installed with:
 
 ```
-conda install tesseract-robotics-command-language
+conda install tesseract-robotics-command-language tesseract-robotics-motion-planners tesseract-robotics-process-managers tesseract-robotics-time-parameterization
 ```
 
 It is possible to list all of the versions of `tesseract-robotics-command-language` available on your platform with:
