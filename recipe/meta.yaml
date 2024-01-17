@@ -1,24 +1,26 @@
-{% set version = "0.9.3" %}
+{% set version = "0.21.6" %}
 
 package:
   name: tesseract-robotics-planning
   version: {{ version }}
 
 source:
-  - git_url: https://github.com/tesseract-robotics/tesseract_planning.git
-    git_rev: {{ version }}
-    git_depth: 50
-    folder: src
-    patches:
-      - tesseract_planning_fix.patch
+  - url: https://github.com/tesseract-robotics/tesseract_planning/archive/refs/tags/{{ version }}.tar.gz
+    sha256: b55b602dd3f933955f33fe3d8ebcc4b9ac8bd582c16856ace53c7f9250749822
+    folder: src/tesseract_planning
 
 build:
-  number: 3
+  number: 0
 
 outputs:
   - name: tesseract-robotics-command-language
-    script: build_command_lang.sh # [unix]
-    script: bld_command_lang.bat # [win]
+    build:
+      script_env:
+        - SUBPKG_SRC_DIR=src/tesseract_planning/tesseract_command_language
+        - SUBPKG_BUILD_DIR=build/tesseract_command_language
+    script: build_pkg.sh # [unix]
+    script: bld_pkg.bat # [win]
+    version: {{ version }}
     requirements:
       build:
         - {{ compiler('c') }}
@@ -33,25 +35,29 @@ outputs:
       host:
         - eigen
         - console_bridge
-        - boost-cpp
+        - libboost-devel
         - tesseract-robotics-common
       run:
         - eigen
         - console_bridge
-        - boost-cpp
         - tesseract-robotics-common
     test:
       commands:
-        - test -f ${PREFIX}/include/tesseract_command_language/plan_instruction.h  # [unix]
+        - test -f ${PREFIX}/include/tesseract_command_language/move_instruction.h  # [unix]
         - test -f ${PREFIX}/lib/libtesseract_command_language.so  # [unix]
         - test -f ${PREFIX}/lib/cmake/tesseract_command_language/tesseract_command_language-config.cmake # [unix]
-        - if not exist %LIBRARY_PREFIX%\include\tesseract_command_language\plan_instruction.h (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\include\tesseract_command_language\move_instruction.h (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\tesseract_command_language.lib (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\bin\tesseract_command_language.dll (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\cmake\tesseract_command_language\tesseract_command_language-config.cmake (exit 1)  # [win]
   - name: tesseract-robotics-motion-planners
-    script: build_motion_planners.sh # [unix]
-    script: bld_motion_planners.bat # [win]
+    build:
+      script_env:
+        - SUBPKG_SRC_DIR=src/tesseract_planning/tesseract_motion_planners
+        - SUBPKG_BUILD_DIR=build/tesseract_motion_planners
+    script: build_pkg.sh # [unix]
+    script: bld_pkg.bat # [win]
+    version: {{ version }}
     requirements:
       build:
         - {{ compiler('c') }}
@@ -70,56 +76,54 @@ outputs:
       host:
         - eigen
         - console_bridge
-        - boost-cpp
+        - libboost-devel
         - tesseract-robotics-common
         - tesseract-robotics-environment
         - tesseract-robotics-command-language
         - ompl
+        - ros-industrial-cmake-boilerplate
         - descartes-light
         - trajopt
-        - trajopt-ifopt
         - trajopt-sco
-        - trajopt-sqp
       run:
         - eigen
         - console_bridge
-        - boost-cpp
         - tesseract-robotics-common
         - tesseract-robotics-environment
         - tesseract-robotics-command-language
         - ompl
         - descartes-light
         - trajopt
-        - trajopt-ifopt
         - trajopt-sco
-        - trajopt-sqp
     test:
       commands:
-        - test -f ${PREFIX}/include/tesseract_motion_planners/default_planner_namespaces.h  # [unix]
+        - test -f ${PREFIX}/include/tesseract_motion_planners/core/planner.h  # [unix]
         - test -f ${PREFIX}/lib/libtesseract_motion_planners_core.so  # [unix]
         - test -f ${PREFIX}/lib/libtesseract_motion_planners_descartes.so  # [unix]
         - test -f ${PREFIX}/lib/libtesseract_motion_planners_ompl.so  # [unix]
         - test -f ${PREFIX}/lib/libtesseract_motion_planners_simple.so  # [unix]
         - test -f ${PREFIX}/lib/libtesseract_motion_planners_trajopt.so  # [unix]
-        - test -f ${PREFIX}/lib/libtesseract_motion_planners_trajopt_ifopt.so  # [unix]
         - test -f ${PREFIX}/lib/cmake/tesseract_motion_planners/tesseract_motion_planners-config.cmake # [unix]
-        - if not exist %LIBRARY_PREFIX%\include\tesseract_motion_planners\default_planner_namespaces.h (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\include\tesseract_motion_planners\core\planner.h (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\tesseract_motion_planners_core.lib (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\tesseract_motion_planners_descartes.lib (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\tesseract_motion_planners_ompl.lib (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\tesseract_motion_planners_simple.lib (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\tesseract_motion_planners_trajopt.lib (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\tesseract_motion_planners_trajopt_ifopt.lib (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\bin\tesseract_motion_planners_core.dll (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\bin\tesseract_motion_planners_descartes.dll (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\bin\tesseract_motion_planners_ompl.dll (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\bin\tesseract_motion_planners_simple.dll (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\bin\tesseract_motion_planners_trajopt.dll (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\bin\tesseract_motion_planners_trajopt_ifopt.dll (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\cmake\tesseract_motion_planners\tesseract_motion_planners-config.cmake (exit 1)  # [win]
   - name: tesseract-robotics-time-parameterization
-    script: build_time_param.sh # [unix]
-    script: bld_time_param.bat # [win]
+    build:
+      script_env:
+        - SUBPKG_SRC_DIR=src/tesseract_planning/tesseract_time_parameterization
+        - SUBPKG_BUILD_DIR=build/tesseract_time_parameterization
+    script: build_pkg.sh # [unix]
+    script: bld_pkg.bat # [win]
+    version: {{ version }}
     requirements:
       build:
         - {{ compiler('c') }}
@@ -133,27 +137,38 @@ outputs:
         - lcov # [linux]
         - pkg-config
       host:
+        - libboost-devel
         - eigen
         - console_bridge
         - tesseract-robotics-common
         - tesseract-robotics-command-language
+        - ros-industrial-cmake-boilerplate
+        - ruckig
+        - jsoncpp
       run:
         - eigen
         - console_bridge
         - tesseract-robotics-common
         - tesseract-robotics-command-language
+        - ruckig
+        - jsoncpp
     test:
       commands:
-        - test -f ${PREFIX}/include/tesseract_time_parameterization/trajectory_container.h  # [unix]
-        - test -f ${PREFIX}/lib/libtesseract_time_parameterization.so  # [unix]
+        - test -f ${PREFIX}/include/tesseract_time_parameterization/core/trajectory_container.h  # [unix]
+        - test -f ${PREFIX}/lib/libtesseract_time_parameterization_core.so  # [unix]
         - test -f ${PREFIX}/lib/cmake/tesseract_time_parameterization/tesseract_time_parameterization-config.cmake # [unix]
-        - if not exist %LIBRARY_PREFIX%\include\tesseract_time_parameterization\trajectory_container.h (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\tesseract_time_parameterization.lib (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\bin\tesseract_time_parameterization.dll (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\include\tesseract_time_parameterization\core\trajectory_container.h (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\lib\tesseract_time_parameterization_core.lib (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\bin\tesseract_time_parameterization_core.dll (exit 1)  # [win]
         - if not exist %LIBRARY_PREFIX%\lib\cmake\tesseract_time_parameterization\tesseract_time_parameterization-config.cmake (exit 1)  # [win]
-  - name: tesseract-robotics-process-managers
-    script: build_process.sh # [unix]
-    script: bld_process.bat # [win]
+  - name: tesseract-robotics-task-composer
+    build:
+      script_env:
+        - SUBPKG_SRC_DIR=src\tesseract_planning\tesseract_task_composer
+        - SUBPKG_BUILD_DIR=build\tesseract_task_composer
+    script: build_pkg.sh # [unix]
+    script: bld_pkg.bat # [win]
+    version: {{ version }}
     requirements:
       build:
         - {{ compiler('c') }}
@@ -171,8 +186,9 @@ outputs:
       host:
         - eigen
         - console_bridge
-        - boost-cpp
+        - libboost-devel
         - taskflow
+        - ros-industrial-cmake-boilerplate
         - tesseract-robotics-common
         - tesseract-robotics-environment
         - tesseract-robotics-command-language
@@ -181,7 +197,6 @@ outputs:
       run:
         - eigen
         - console_bridge
-        - boost-cpp
         - taskflow
         - tesseract-robotics-common
         - tesseract-robotics-environment
@@ -190,23 +205,23 @@ outputs:
         - tesseract-robotics-time-parameterization
     test:
       commands:
-        - test -f ${PREFIX}/include/tesseract_process_managers/core/default_process_planners.h  # [unix]
-        - test -f ${PREFIX}/lib/libtesseract_process_managers.so  # [unix]
-        - test -f ${PREFIX}/lib/cmake/tesseract_process_managers/tesseract_process_managers-config.cmake # [unix]
-        - if not exist %LIBRARY_PREFIX%\include\tesseract_process_managers\core\default_process_planners.h (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\tesseract_process_managers.lib (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\bin\tesseract_process_managers.dll (exit 1)  # [win]
-        - if not exist %LIBRARY_PREFIX%\lib\cmake\tesseract_process_managers\tesseract_process_managers-config.cmake (exit 1)  # [win]
+        - test -f ${PREFIX}/include/tesseract_task_composer/core/task_composer_node.h  # [unix]
+        - test -f ${PREFIX}/lib/libtesseract_task_composer.so  # [unix]
+        - test -f ${PREFIX}/lib/cmake/tesseract_task_composer/tesseract_task_composer-config.cmake # [unix]
+        - if not exist %LIBRARY_PREFIX%\include\tesseract_task_composer\core\task_composer_node.h (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\lib\tesseract_task_composer.lib (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\bin\tesseract_task_composer.dll (exit 1)  # [win]
+        - if not exist %LIBRARY_PREFIX%\lib\cmake\tesseract_task_composer\tesseract_task_composer-config.cmake (exit 1)  # [win]
   
 about:
   home: https://github.com/tesseract-robotics/tesseract_planning
   summary: Motion Planning Environment
   license: Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause
   license_file: 
-    - src/LICENSE
-    - src/LICENSE.Apache-2.0
-    - src/LICENSE.BSD-3-Clause
-    - src/LICENSE.BSD-2-Clause
+    - src/tesseract_planning/LICENSE
+    - src/tesseract_planning/LICENSE.Apache-2.0
+    - src/tesseract_planning/LICENSE.BSD-3-Clause
+    - src/tesseract_planning/LICENSE.BSD-2-Clause
 
 extra:
   recipe-maintainers:
