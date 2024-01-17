@@ -1,15 +1,18 @@
-boost_cpp:
-- 1.74.0
 c_compiler:
 - vs2019
 channel_sources:
-- tesseract-robotics,conda-forge,defaults
+- tesseract-robotics,conda-forge
 channel_targets:
 - tesseract-robotics main
+console_bridge:
+- '1.0'
 cxx_compiler:
 - vs2019
-pin_run_as_build:
-  boost-cpp:
-    max_pin: x.x.x
+jsoncpp:
+- 1.9.5
+libboost_devel:
+- '1.82'
+pcl:
+- 1.13.1
 target_platform:
 - win-64

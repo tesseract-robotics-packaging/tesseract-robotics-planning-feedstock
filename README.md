@@ -1,11 +1,11 @@
-About tesseract-robotics-planning
-=================================
+About tesseract-robotics-planning-feedstock
+===========================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/tesseract-robotics/tesseract-robotics-planning-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/tesseract-robotics/tesseract_planning
 
 Package license: Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/tesseract-robotics/tesseract-robotics-planning-feedstock/blob/master/LICENSE.txt)
 
 Summary: Motion Planning Environment
 
@@ -23,7 +23,7 @@ Current release info
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-tesseract--robotics--command--language-green.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-command-language) | [![Conda Downloads](https://img.shields.io/conda/dn/tesseract-robotics/tesseract-robotics-command-language.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-command-language) | [![Conda Version](https://img.shields.io/conda/vn/tesseract-robotics/tesseract-robotics-command-language.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-command-language) | [![Conda Platforms](https://img.shields.io/conda/pn/tesseract-robotics/tesseract-robotics-command-language.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-command-language) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-tesseract--robotics--motion--planners-green.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-motion-planners) | [![Conda Downloads](https://img.shields.io/conda/dn/tesseract-robotics/tesseract-robotics-motion-planners.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-motion-planners) | [![Conda Version](https://img.shields.io/conda/vn/tesseract-robotics/tesseract-robotics-motion-planners.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-motion-planners) | [![Conda Platforms](https://img.shields.io/conda/pn/tesseract-robotics/tesseract-robotics-motion-planners.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-motion-planners) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-tesseract--robotics--process--managers-green.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-process-managers) | [![Conda Downloads](https://img.shields.io/conda/dn/tesseract-robotics/tesseract-robotics-process-managers.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-process-managers) | [![Conda Version](https://img.shields.io/conda/vn/tesseract-robotics/tesseract-robotics-process-managers.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-process-managers) | [![Conda Platforms](https://img.shields.io/conda/pn/tesseract-robotics/tesseract-robotics-process-managers.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-process-managers) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-tesseract--robotics--task--composer-green.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-task-composer) | [![Conda Downloads](https://img.shields.io/conda/dn/tesseract-robotics/tesseract-robotics-task-composer.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-task-composer) | [![Conda Version](https://img.shields.io/conda/vn/tesseract-robotics/tesseract-robotics-task-composer.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-task-composer) | [![Conda Platforms](https://img.shields.io/conda/pn/tesseract-robotics/tesseract-robotics-task-composer.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-task-composer) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-tesseract--robotics--time--parameterization-green.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-time-parameterization) | [![Conda Downloads](https://img.shields.io/conda/dn/tesseract-robotics/tesseract-robotics-time-parameterization.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-time-parameterization) | [![Conda Version](https://img.shields.io/conda/vn/tesseract-robotics/tesseract-robotics-time-parameterization.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-time-parameterization) | [![Conda Platforms](https://img.shields.io/conda/pn/tesseract-robotics/tesseract-robotics-time-parameterization.svg)](https://anaconda.org/tesseract-robotics/tesseract-robotics-time-parameterization) |
 
 Installing tesseract-robotics-planning
@@ -36,16 +36,41 @@ conda config --add channels tesseract-robotics
 conda config --set channel_priority strict
 ```
 
-Once the `tesseract-robotics` channel has been enabled, `tesseract-robotics-command-language, tesseract-robotics-motion-planners, tesseract-robotics-process-managers, tesseract-robotics-time-parameterization` can be installed with:
+Once the `tesseract-robotics` channel has been enabled, `tesseract-robotics-command-language, tesseract-robotics-motion-planners, tesseract-robotics-task-composer, tesseract-robotics-time-parameterization` can be installed with `conda`:
 
 ```
-conda install tesseract-robotics-command-language tesseract-robotics-motion-planners tesseract-robotics-process-managers tesseract-robotics-time-parameterization
+conda install tesseract-robotics-command-language tesseract-robotics-motion-planners tesseract-robotics-task-composer tesseract-robotics-time-parameterization
 ```
 
-It is possible to list all of the versions of `tesseract-robotics-command-language` available on your platform with:
+or with `mamba`:
+
+```
+mamba install tesseract-robotics-command-language tesseract-robotics-motion-planners tesseract-robotics-task-composer tesseract-robotics-time-parameterization
+```
+
+It is possible to list all of the versions of `tesseract-robotics-command-language` available on your platform with `conda`:
 
 ```
 conda search tesseract-robotics-command-language --channel tesseract-robotics
+```
+
+or with `mamba`:
+
+```
+mamba search tesseract-robotics-command-language --channel tesseract-robotics
+```
+
+Alternatively, `mamba repoquery` may provide more information:
+
+```
+# Search all versions available on your platform:
+mamba repoquery search tesseract-robotics-command-language --channel tesseract-robotics
+
+# List packages depending on `tesseract-robotics-command-language`:
+mamba repoquery whoneeds tesseract-robotics-command-language --channel tesseract-robotics
+
+# List dependencies of `tesseract-robotics-command-language`:
+mamba repoquery depends tesseract-robotics-command-language --channel tesseract-robotics
 ```
 
 
