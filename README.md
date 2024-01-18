@@ -29,14 +29,14 @@ Current release info
 Installing tesseract-robotics-planning
 ======================================
 
-Installing `tesseract-robotics-planning` from the `tesseract-robotics` channel can be achieved by adding `tesseract-robotics` to your channels with:
+Installing `tesseract-robotics-planning` from the `tesseract-robotics/label/dev_indv` channel can be achieved by adding `tesseract-robotics/label/dev_indv` to your channels with:
 
 ```
-conda config --add channels tesseract-robotics
+conda config --add channels tesseract-robotics/label/dev_indv
 conda config --set channel_priority strict
 ```
 
-Once the `tesseract-robotics` channel has been enabled, `tesseract-robotics-command-language, tesseract-robotics-motion-planners, tesseract-robotics-task-composer, tesseract-robotics-time-parameterization` can be installed with `conda`:
+Once the `tesseract-robotics/label/dev_indv` channel has been enabled, `tesseract-robotics-command-language, tesseract-robotics-motion-planners, tesseract-robotics-task-composer, tesseract-robotics-time-parameterization` can be installed with `conda`:
 
 ```
 conda install tesseract-robotics-command-language tesseract-robotics-motion-planners tesseract-robotics-task-composer tesseract-robotics-time-parameterization
@@ -51,26 +51,26 @@ mamba install tesseract-robotics-command-language tesseract-robotics-motion-plan
 It is possible to list all of the versions of `tesseract-robotics-command-language` available on your platform with `conda`:
 
 ```
-conda search tesseract-robotics-command-language --channel tesseract-robotics
+conda search tesseract-robotics-command-language --channel tesseract-robotics/label/dev_indv
 ```
 
 or with `mamba`:
 
 ```
-mamba search tesseract-robotics-command-language --channel tesseract-robotics
+mamba search tesseract-robotics-command-language --channel tesseract-robotics/label/dev_indv
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search tesseract-robotics-command-language --channel tesseract-robotics
+mamba repoquery search tesseract-robotics-command-language --channel tesseract-robotics/label/dev_indv
 
 # List packages depending on `tesseract-robotics-command-language`:
-mamba repoquery whoneeds tesseract-robotics-command-language --channel tesseract-robotics
+mamba repoquery whoneeds tesseract-robotics-command-language --channel tesseract-robotics/label/dev_indv
 
 # List dependencies of `tesseract-robotics-command-language`:
-mamba repoquery depends tesseract-robotics-command-language --channel tesseract-robotics
+mamba repoquery depends tesseract-robotics-command-language --channel tesseract-robotics/label/dev_indv
 ```
 
 
