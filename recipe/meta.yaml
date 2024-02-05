@@ -85,6 +85,7 @@ outputs:
         - descartes-light
         - trajopt
         - trajopt-sco
+        - python
       run:
         - eigen
         - console_bridge
@@ -95,6 +96,7 @@ outputs:
         - descartes-light
         - trajopt
         - trajopt-sco
+        - python
     test:
       commands:
         - test -f ${PREFIX}/include/tesseract_motion_planners/core/planner.h  # [unix]
@@ -183,6 +185,7 @@ outputs:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
         - {{ cdt('mesa-dri-drivers') }}  # [linux]
         - pkg-config
+        - python
       host:
         - eigen
         - console_bridge
@@ -203,6 +206,7 @@ outputs:
         - tesseract-robotics-command-language
         - tesseract-robotics-motion-planners
         - tesseract-robotics-time-parameterization
+        - python
     test:
       commands:
         - test -f ${PREFIX}/include/tesseract_task_composer/core/task_composer_node.h  # [unix]
