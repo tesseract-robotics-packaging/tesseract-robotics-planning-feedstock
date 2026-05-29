@@ -3,7 +3,9 @@ assimp:
 bullet_cpp:
 - '3.25'
 c_compiler:
-- vs2022
+- gcc
+c_compiler_version:
+- '14'
 channel_sources:
 - tesseract-robotics,conda-forge
 channel_targets:
@@ -11,7 +13,11 @@ channel_targets:
 console_bridge:
 - '1.0'
 cxx_compiler:
-- vs2022
+- gxx
+cxx_compiler_version:
+- '14'
+docker_image:
+- quay.io/condaforge/linux-anvil-x86_64:alma9
 eigen_abi_devel:
 - 5.0.1
 flann:
@@ -25,10 +31,13 @@ osqp_eigen:
 pcl:
 - 1.15.1
 target_platform:
-- win-64
+- linux-aarch64
 tinyxml2:
 - '11.0'
 urdfdom:
 - '5.1'
 xz:
 - '5'
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
