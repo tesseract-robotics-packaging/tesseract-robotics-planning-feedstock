@@ -90,6 +90,8 @@ requirements:
         - xorg-libx11
         - xorg-libxext
         - gperftools
+  run_exports:
+    - ${{ pin_subpackage('tesseract-robotics-planning', upper_bound='x.x') }}
 
 tests:
   - package_contents:
